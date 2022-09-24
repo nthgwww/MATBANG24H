@@ -14,6 +14,9 @@ const Pagination = () => {
     const [isHideStart, setIsHideStart] = useState(false)
     const [searchParams] = useSearchParams()
 
+    // number => string: ''+number
+    // string number +string // +dsdsddsds NaN +5
+
     useEffect(() => {
         let page = searchParams.get('page')
         page && +page !== currentPage && setCurrentPage(+page)

@@ -70,6 +70,22 @@ input[type="range"]::-ms-thumb:active {
     border: solid 1px rgb(144, 211, 255);
 }
 
+button.slick-arrow::before {
+    font-size: 50px !important;
+    color: yellow !important;
+}
+
+.slick-next {
+    right: 35px !important;
+    top: 45% !important;
+}
+
+.slick-prev {
+    left: 10px !important;
+    z-index: 10 !important;
+    top: 45% !important;
+}
+
 @keyframes slide-right {
     0% {
         -webkit-transform: translateX(0);
