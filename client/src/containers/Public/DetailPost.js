@@ -1,10 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPostsLimit } from '../../store/actions'
 import { Slider } from '../../components'
+import { Map, BoxInfo, RelatedPost } from '../../components'
+import { underMap } from '../../ultils/constant'
 import icons from '../../ultils/icons'
+
 const { HiLocationMarker, TbReportMoney, RiCrop2Line, BsStopwatch, BsHash } = icons
+
+
+
 
 const DetailPost = () => {
     const { postId } = useParams()
@@ -15,6 +21,8 @@ const DetailPost = () => {
     useEffect(() => {
         postId && dispatch(getPostsLimit({ id: postId }))
     }, [postId])
+
+
     return (
         <div className='w-full flex gap-4'>
             <div className='w-[70%]'>
@@ -113,15 +121,20 @@ const DetailPost = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className='mt-8'>
+                    {posts && <div className='mt-8'>
                         <h3 className='font-semibold text-xl my-4'>Bản đồ</h3>
-
-                    </div>
+                        <Map address={posts[0]?.address} />
+                        <span className='text-gray-500 text-sm py-4 text-justify'>{underMap[0]}</span>
+                        <span className='text-gray-500 text-sm py-4 text-justify italic'>{`${posts[0]?.title} - Mã tin: ${posts[0]?.attributes?.hashtag}`}</span>
+                        <span className='text-gray-500 text-sm py-4 text-justify'>{underMap[1]}</span>
+                    </div>}
                 </div>
 
             </div>
-            <div className='w-[30%]'>
-                sidebar
+            <div className='w-[30%] flex flex-col gap-8'>
+                <BoxInfo userData={posts[0]?.user} />
+                <RelatedPost />
+                <RelatedPost newPost />
             </div>
         </div>
     )

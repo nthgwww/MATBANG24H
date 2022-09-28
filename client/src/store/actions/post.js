@@ -69,6 +69,32 @@ export const getNewPosts = () => async (dispatch) => {
         })
     }
 }
+export const getOutStandingPost = () => async (dispatch) => {
+    try {
+        const response = await apiGetPostsLimit({
+            limitPost: 5,
+            order: ['star', 'DESC']
+        })
+        if (response?.data.err === 0) {
+            dispatch({
+                type: actionTypes.GET_OUTSTANDING,
+                outStandingPost: response.data.response.rows,
+            })
+        } else {
+            dispatch({
+                type: actionTypes.GET_OUTSTANDING,
+                msg: response.data.msg,
+                outStandingPost: null
+            })
+        }
+
+    } catch (error) {
+        dispatch({
+            type: actionTypes.GET_OUTSTANDING,
+            outStandingPost: null
+        })
+    }
+}
 export const getPostsLimitAdmin = (query) => async (dispatch) => {
     try {
         const response = await apiGetPostsLimitAdmin(query)
