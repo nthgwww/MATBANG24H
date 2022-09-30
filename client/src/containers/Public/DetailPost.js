@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPostsLimit } from '../../store/actions'
@@ -6,6 +6,8 @@ import { Slider } from '../../components'
 import { Map, BoxInfo, RelatedPost } from '../../components'
 import { underMap } from '../../ultils/constant'
 import icons from '../../ultils/icons'
+import { useNavigate, createSearchParams } from 'react-router-dom'
+import { path } from '../../ultils/constant'
 
 const { HiLocationMarker, TbReportMoney, RiCrop2Line, BsStopwatch, BsHash } = icons
 
@@ -16,12 +18,20 @@ const DetailPost = () => {
     const { postId } = useParams()
     const dispatch = useDispatch()
     const { posts } = useSelector(state => state.post)
+    const navigate = useNavigate()
 
 
     useEffect(() => {
         postId && dispatch(getPostsLimit({ id: postId }))
     }, [postId])
 
+    const handleFilterLabel = () => {
+        const titleSearch = `Tìm kiếm tin đăng theo chuyên mục ${posts[0]?.labelData?.value}`
+        navigate({
+            pathname: `/${path.SEARCH}`,
+            search: createSearchParams({ labelCode: posts[0]?.labelData?.code }).toString()
+        }, { state: { titleSearch } });
+    }
 
     return (
         <div className='w-full flex gap-4'>
@@ -32,7 +42,12 @@ const DetailPost = () => {
                         <h2 className='text-xl font-bold text-red-600'>{posts[0]?.title}</h2>
                         <div className='flex items-center gap-2'>
                             <span>Chuyên mục:</span>
-                            <span className='text-blue-600 underline font-medium hover:text-orange-600 cursor-pointer'>{posts[0]?.overviews?.area}</span>
+                            <span
+                                className='text-blue-600 underline font-medium hover:text-orange-600 cursor-pointer'
+                                onClick={handleFilterLabel}
+                            >
+                                {posts[0]?.labelData?.value}
+                            </span>
                         </div>
                         <div className='flex items-center gap-2'>
                             <HiLocationMarker color='#2563eb' />
