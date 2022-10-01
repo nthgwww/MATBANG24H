@@ -13,6 +13,7 @@ const Map = ({ address }) => {
         const getCoords = async () => {
             const results = await geocodeByAddress(address)
             const latLng = await getLatLng(results[0])
+            console.log(latLng)
             setCoords(latLng)
         }
         if (address) {

@@ -2,7 +2,6 @@ import { getNumbersArea, getNumbersPrice } from "./getNumbers"
 
 
 export const getCodePrice = (totals, min, max) => {
-    let arr = []
     return totals?.map(item => {
         let arrMaxMin = getNumbersPrice(item.value)
         return ({
@@ -13,7 +12,6 @@ export const getCodePrice = (totals, min, max) => {
     })
 }
 export const getCodeArea = (totals, min, max) => {
-    let arr = []
     return totals?.map(item => {
         let arrMaxMin = getNumbersArea(item.value)
         return ({
