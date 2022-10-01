@@ -2,8 +2,11 @@ import React, { memo } from 'react'
 import moment from 'moment'
 import 'moment/locale/vi'
 import { GrStar } from 'react-icons/gr'
+import { path } from '../ultils/constant'
+import { Link } from 'react-router-dom'
+import { formatVietnameseToString } from '../ultils/Common/formatVietnameseToString'
 
-const Sitem = ({ title, price, image, createdAt, star }) => {
+const Sitem = ({ title, price, image, createdAt, star, id }) => {
 
     const formatTime = (createdAt) => {
         return moment(createdAt).fromNow()
@@ -16,7 +19,7 @@ const Sitem = ({ title, price, image, createdAt, star }) => {
     }
 
     return (
-        <div className='w-full flex items-center gap-2 py-2 border-b border-gray-300'>
+        <Link to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/', ''))}/${id}`} className='w-full flex items-center gap-2 py-2 border-b border-gray-300'>
             <img
                 src={image[0]}
                 alt="anh"
@@ -36,7 +39,7 @@ const Sitem = ({ title, price, image, createdAt, star }) => {
                     <span className='text-sm text-gray-300'>{formatTime(createdAt)}</span>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

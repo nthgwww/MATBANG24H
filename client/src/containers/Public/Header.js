@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import logo from '../../assets/logowithoutbg.png'
 import { Button, User } from '../../components'
 import icons from '../../ultils/icons'
-import { useNavigate, Link, useSearchParams } from 'react-router-dom'
+import { useNavigate, Link, useSearchParams, useLocation } from 'react-router-dom'
 import { path } from '../../ultils/constant'
 import { useSelector, useDispatch } from 'react-redux'
 import * as actions from '../../store/actions'
@@ -14,6 +14,7 @@ const { AiOutlinePlusCircle, AiOutlineLogout, BsChevronDown } = icons
 const Header = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const location = useLocation()
     const [searchParams] = useSearchParams()
     const headerRef = useRef()
     const { isLoggedIn } = useSelector(state => state.auth)
@@ -23,7 +24,7 @@ const Header = () => {
     }, [])
     useEffect(() => {
         headerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, [searchParams.get('page')])
+    }, [searchParams.get('page'), location.pathname])
 
     return (
         <div ref={headerRef} className='w-3/5 '>
