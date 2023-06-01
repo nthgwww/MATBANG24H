@@ -16,8 +16,12 @@ const verifyToken = (req, res, next) => {
         req.user = user
         next()
     })
-
-
+}
+export const isAdmin = (req, res, next) => {
+    const { role } = req.user
+    if (role !== 'ADMIN')
+        throw new Error('Require Admin Role')
+    next()
 }
 
 export default verifyToken

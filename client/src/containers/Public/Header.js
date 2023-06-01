@@ -18,10 +18,13 @@ const Header = () => {
     const [searchParams] = useSearchParams()
     const headerRef = useRef()
     const { isLoggedIn } = useSelector(state => state.auth)
+    const { currentData } = useSelector(state => state.user)
     const [isShowMenu, setIsShowMenu] = useState(false)
     const goLogin = useCallback((flag) => {
         navigate(path.LOGIN, { state: { flag } })
     }, [])
+
+    // console.log(currentData)
     useEffect(() => {
         headerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, [searchParams.get('page'), location.pathname])
@@ -63,18 +66,23 @@ const Header = () => {
                             onClick={() => setIsShowMenu(prev => !prev)}
                         />
                         {isShowMenu && <div className='absolute min-w-200 top-full bg-white shadow-md rounded-md p-4 right-0 flex flex-col'>
-                            {menuManage.map(item => {
+                            {currentData?.role !== 'ADMIN' && menuManage.map(item => {
                                 return (
                                     <Link
                                         className='hover:text-orange-500 flex items-center gap-2 text-blue-600 border-b border-gray-200 py-2'
                                         key={item.id}
                                         to={item?.path}
                                     >
-                                        {item?.icon}
                                         {item.text}
                                     </Link>
                                 )
                             })}
+                            {currentData?.role === 'ADMIN' && <Link
+                                className='hover:text-orange-500 flex items-center gap-2 text-blue-600 border-b border-gray-200 py-2'
+                                to={`/${path.ADMIN}/${path.DASHBOARD}`}
+                            >
+                                Admin
+                            </Link>}
                             <span
                                 className='cursor-pointer hover:text-orange-500 text-blue-500 py-2 flex items-center gap-2'
                                 onClick={() => {
@@ -82,7 +90,6 @@ const Header = () => {
                                     dispatch(actions.logout())
                                 }}
                             >
-                                <AiOutlineLogout />
                                 Đăng xuất
                             </span>
                         </div>}

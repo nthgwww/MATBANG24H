@@ -1,3 +1,5 @@
+import icons from "./icons"
+
 export const path = {
     HOME: '/*',
     HOME__PAGE: ':page',
@@ -15,7 +17,10 @@ export const path = {
     CONTACT: 'lien-he',
     DETAIL: '/chi-tiet/',
     DETAIL_ALL: 'chi-tiet/*',
-    RESET_PASSWORD: 'reset-mat-khau/:token'
+    RESET_PASSWORD: 'reset-mat-khau/:token',
+    ADMIN: 'admin',
+    DASHBOARD: 'dashboard',
+    MANAGE_USER: 'quan-ly-thanh-vien'
 }
 
 export const text = {
@@ -52,4 +57,26 @@ export const attention = [
     'Các bạn nên điền đầy đủ thông tin vào các mục để tin đăng có hiệu quả hơn.',
     'Để tăng độ tin cậy và tin rao được nhiều người quan tâm hơn, hãy sửa vị trí tin rao của bạn trên bản đồ bằng cách kéo icon tới đúng vị trí của tin rao.',
     'Tin đăng có hình ảnh rõ ràng sẽ được xem và gọi gấp nhiều lần so với tin rao không có ảnh. Hãy đăng ảnh để được giao dịch nhanh chóng!'
+]
+const { ImPencil2, TbLayoutDashboard, AiOutlineUser, MdOutlineGroups, MdOutlineReportGmailerrorred, AiOutlineFieldTime } = icons
+export const memuSidebar = [
+    {
+        id: 10,
+        text: 'Tổng quan',
+        path: path.ADMIN + '/' + path.DASHBOARD,
+        icon: <TbLayoutDashboard size={24} />
+    },
+    {
+        id: 30,
+        text: 'Quản lý thành viên',
+        path: path.ADMIN + '/' + path.MANAGE_USER,
+        icon: <MdOutlineGroups size={24} />
+    },
+    {
+        id: 90,
+        text: 'Thông tin cá nhân',
+        path: path.ADMIN + '/' + path.EDIT_ACCOUNT,
+        icon: <AiOutlineUser size={24} />,
+
+    },
 ]

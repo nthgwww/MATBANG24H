@@ -19,6 +19,10 @@ module.exports = {
       phone: {
         type: Sequelize.STRING
       },
+      role: {
+        type: Sequelize.STRING,
+        defaultValue: 'USER'
+      },
       zalo: {
         type: Sequelize.STRING
       },
