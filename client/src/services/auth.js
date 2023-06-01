@@ -27,3 +27,15 @@ export const apiLogin = (payload) => new Promise(async (resolve, reject) => {
     }
 })
 
+export const apiForgotPassword = (data) => axiosConfig({
+    url: 'api/v1/auth/forgotpassword',
+    method: 'put',
+    data
+})
+
+export const apiResetPass = (data) => axiosConfig({
+    url: 'api/v1/auth/resetpassword',
+    method: 'put',
+    data
+})
+

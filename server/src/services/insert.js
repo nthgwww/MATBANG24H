@@ -27,7 +27,17 @@ const dataBody = [
         code: 'NCT'
     },
 ]
-
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
 
 const hashPassword = password => bcrypt.hashSync(password, bcrypt.genSaltSync(12))
 
@@ -100,6 +110,7 @@ export const insertService = () => new Promise(async (resolve, reject) => {
                     password: hashPassword('123456'),
                     phone: item?.contact?.content.find(i => i.name === "Điện thoại:")?.content,
                     zalo: item?.contact?.content.find(i => i.name === "Zalo")?.content,
+                    email: `${makeid(6)}@gmail.com`
                 })
             })
         })

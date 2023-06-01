@@ -10,6 +10,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      email: {
+        type: Sequelize.STRING
+      },
       password: {
         type: Sequelize.STRING
       },
@@ -21,6 +24,12 @@ module.exports = {
       },
       fbUrl: {
         type: Sequelize.STRING
+      },
+      rspasstk: {
+        type: Sequelize.STRING
+      },
+      rspassexp: {
+        type: Sequelize.DATE
       },
       avatar: {
         type: Sequelize.BLOB('long')

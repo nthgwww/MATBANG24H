@@ -40,6 +40,7 @@ const EditAccount = () => {
                 <div className='py-6 flex flex-col gap-4 w-full'>
                     <InputReadOnly value={`#${currentData?.id?.match(/\d/g).join('')?.slice(0, 6)}` || ''} direction='flex-row' label='Mã thành viên' />
                     <InputReadOnly value={currentData?.phone} editPhone direction='flex-row' label='Số điện thoại' />
+                    <InputReadOnly value={currentData?.email} editPhone direction='flex-row' label='Email' />
                     <InputFormV2
                         name='name'
                         setValue={setPayload}
@@ -47,7 +48,6 @@ const EditAccount = () => {
                         value={payload.name}
                         label='Tên hiển thị' />
                     <InputFormV2
-
                         name='zalo'
                         setValue={setPayload}
                         direction='flex-row'

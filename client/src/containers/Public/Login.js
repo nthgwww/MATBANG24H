@@ -5,6 +5,7 @@ import * as actions from '../../store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import validate from '../../ultils/Common/validateFields'
+import { apiForgotPassword } from '../../services'
 
 const Login = () => {
     const location = useLocation()
@@ -13,11 +14,14 @@ const Login = () => {
     const { isLoggedIn, msg, update } = useSelector(state => state.auth)
     const [isRegister, setIsRegister] = useState(location.state?.flag)
     const [invalidFields, setInvalidFields] = useState([])
+    const [isForgot, setIsForgot] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [email, setEmail] = useState('')
     const [payload, setPayload] = useState({
         phone: '',
         password: '',
-        name: ''
+        name: '',
+        email
     })
     useEffect(() => {
         setIsRegister(location.state?.flag)
@@ -35,12 +39,21 @@ const Login = () => {
 
     const handleSubmit = async () => {
         setIsLoading(true)
-        let finalPayload = isRegister ? payload : {
-            phone: payload.phone,
-            password: payload.password
+        const { phone, name, ...data } = payload
+        const invalids = isRegister ? validate(payload, setInvalidFields) : validate(data, setInvalidFields)
+        if (invalids === 0) isRegister ? dispatch(actions.register(payload)) : dispatch(actions.login(data))
+        else {
+            setIsLoading(false)
+            alert('Missing inputs')
         }
-        let invalids = validate(finalPayload, setInvalidFields)
-        if (invalids === 0) isRegister ? dispatch(actions.register(payload)) : dispatch(actions.login(payload))
+    }
+    const handleForgotPassword = async () => {
+        if (email) {
+            const response = await apiForgotPassword({ email })
+            Swal.fire('Almost...', response.data.mes, 'info').then(() => {
+                setIsForgot(false)
+            })
+        } else alert('Hãy nhập mail...')
     }
 
 
@@ -48,6 +61,26 @@ const Login = () => {
         <div className='w-full flex items-center justify-center'>
             {isLoading && <div className='fixed top-0 right-0 left-0 bottom-0 bg-overlay-70 flex items-center justify-center'>
                 <Loading />
+            </div>}
+            {isForgot && <div onClick={() => setIsForgot(false)} className='fixed top-0 right-0 left-0 bottom-0 bg-overlay-70 flex items-center justify-center'>
+                <div onClick={e => e.stopPropagation()} className='w-[600px] bg-white rounded-md p-4 flex flex-col gap-2'>
+                    <span className='font-semibold'>Nhập email của bạn:</span>
+                    <input type="text"
+                        className='p-2 border rounded-md outline-none placeholder:text-sm placeholder:italic'
+                        placeholder='Nhập email để có thể xác thực đổi mật khẩu'
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    <div className='flex justify-end'>
+                        <button
+                            type='button'
+                            className='w-fit px-4 py-2 text-white font-bold bg-blue-500 rounded-md'
+                            onClick={handleForgotPassword}
+                        >
+                            Xác nhận
+                        </button>
+                    </div>
+                </div>
             </div>}
             <div className='bg-white w-[600px] p-[30px] pb-[100px] rounded-md shadow-sm'>
                 <h3 className='font-semibold text-2xl mb-3'>{isRegister ? 'Đăng kí tài khoản' : 'Đăng nhập'}</h3>
@@ -58,14 +91,25 @@ const Login = () => {
                         value={payload.name}
                         setValue={setPayload}
                         keyPayload={'name'}
+                        placeholder={'Họ tên của bạn hoặc tên nhà trọ'}
                     />}
-                    <InputForm
+                    {isRegister && <InputForm
                         setInvalidFields={setInvalidFields}
                         invalidFields={invalidFields}
                         label={'SỐ ĐIỆN THOẠI'}
                         value={payload.phone}
                         setValue={setPayload}
                         keyPayload={'phone'}
+                        placeholder={'Nhập số điện thoại của bạn'}
+                    />}
+                    <InputForm
+                        setInvalidFields={setInvalidFields}
+                        invalidFields={invalidFields}
+                        label={'EMAIL'}
+                        value={payload.email}
+                        setValue={setPayload}
+                        keyPayload={'email'}
+                        placeholder='Email để lấy lại mật khẩu khi bị quên'
                     />
                     <InputForm
                         setInvalidFields={setInvalidFields}
@@ -75,6 +119,7 @@ const Login = () => {
                         setValue={setPayload}
                         keyPayload={'password'}
                         type='password'
+                        placeholder={'Nhập mật khẩu'}
                     />
                     <Button
                         text={isRegister ? 'Đăng kí' : 'Đăng nhập'}
@@ -100,7 +145,7 @@ const Login = () => {
                             Đăng nhập ngay
                         </span></small>
                         : <>
-                            <small className='text-[blue] hover:text-[red] cursor-pointer' >Bạn quên mật khẩu</small>
+                            <small onClick={() => setIsForgot(true)} className='text-[blue] hover:text-[red] cursor-pointer' >Bạn quên mật khẩu</small>
                             <small
                                 onClick={() => {
                                     setIsRegister(true)

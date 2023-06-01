@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { Home, Login, Rental, Homepage, DetailPost, SearchDetail, Contact } from './containers/Public'
+import { Home, Login, Rental, Homepage, DetailPost, SearchDetail, Contact, ResetPassword } from './containers/Public'
 import { path } from './ultils/constant'
 import { System, CreatePost, ManagePost, EditAccount } from './containers/System'
 import * as actions from './store/actions'
@@ -38,6 +38,7 @@ function App() {
           <Route path={path.CONTACT} element={<Contact />} />
           {/* <Route path={path.DETAIL_ALL} element={<DetailPost />} /> */}
         </Route>
+        <Route path={path.RESET_PASSWORD} element={<ResetPassword />} />
         <Route path={path.SYSTEM} element={<System />} >
           <Route path={path.CREATE_POST} element={<CreatePost />} />
           <Route path={path.MANAGE_POST} element={<ManagePost />} />
