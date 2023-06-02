@@ -20,7 +20,8 @@ export const path = {
     RESET_PASSWORD: 'reset-mat-khau/:token',
     ADMIN: 'admin',
     DASHBOARD: 'dashboard',
-    MANAGE_USER: 'quan-ly-thanh-vien'
+    MANAGE_USER: 'quan-ly-thanh-vien',
+    MANAGE_POST: 'quan-ly-bai-dang'
 }
 
 export const text = {
@@ -63,19 +64,26 @@ export const memuSidebar = [
     {
         id: 10,
         text: 'Tổng quan',
-        path: path.ADMIN + '/' + path.DASHBOARD,
+        path: path.DASHBOARD,
         icon: <TbLayoutDashboard size={24} />
     },
     {
         id: 30,
         text: 'Quản lý thành viên',
-        path: path.ADMIN + '/' + path.MANAGE_USER,
+        path: path.MANAGE_USER,
         icon: <MdOutlineGroups size={24} />
     },
     {
         id: 90,
         text: 'Thông tin cá nhân',
-        path: path.ADMIN + '/' + path.EDIT_ACCOUNT,
+        path: path.EDIT_ACCOUNT,
+        icon: <AiOutlineUser size={24} />,
+
+    },
+    {
+        id: 90,
+        text: 'Quản lý bài đăng',
+        path: path.MANAGE_POST,
         icon: <AiOutlineUser size={24} />,
 
     },

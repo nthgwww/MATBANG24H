@@ -31,3 +31,53 @@ export const updateUser = async (req, res) => {
         })
     }
 }
+export const getUsers = async (req, res) => {
+    try {
+        const response = await services.getUsers(req.body)
+        return res.status(200).json(response)
+
+    } catch (error) {
+        return res.status(500).json({
+            err: -1,
+            msg: 'Failed at user controller: ' + error
+        })
+    }
+}
+export const getRoles = async (req, res) => {
+    try {
+        const response = await services.getRoles()
+        return res.status(200).json(response)
+
+    } catch (error) {
+        return res.status(500).json({
+            err: -1,
+            msg: 'Failed at user controller: ' + error
+        })
+    }
+}
+export const updateUserByAdmin = async (req, res) => {
+    try {
+        const { uid } = req.params
+        const response = await services.updateUserByAdmin(uid)
+        return res.status(200).json(response)
+
+    } catch (error) {
+        return res.status(500).json({
+            err: -1,
+            msg: 'Failed at user controller: ' + error
+        })
+    }
+}
+export const deleteUserByAdmin = async (req, res) => {
+    try {
+        const { uid } = req.params
+        const response = await services.deleteUserByAdmin(uid)
+        return res.status(200).json(response)
+
+    } catch (error) {
+        return res.status(500).json({
+            err: -1,
+            msg: 'Failed at user controller: ' + error
+        })
+    }
+}

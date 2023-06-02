@@ -3,5 +3,5 @@ INSERT INTO Categories (code, value, header, subheader, createdAt, updatedAt) VA
 INSERT INTO Categories (code, value, header, subheader, createdAt, updatedAt) VALUES ("CTPT","Cho thuê phòng trọ", "Cho Thuê Phòng Trọ, Giá Rẻ, Tiện Nghi, Mới Nhất 2022", "Cho thuê phòng trọ - Kênh thông tin số 1 về phòng trọ giá rẻ, phòng trọ sinh viên, phòng trọ cao cấp mới nhất năm 2022. Tất cả nhà trọ cho thuê giá tốt nhất tại Việt Nam.", current_timestamp, current_timestamp);
 INSERT INTO Categories (code, value, header, subheader, createdAt, updatedAt) VALUES ("NCT", "Nhà cho thuê","Cho Thuê Nhà Nguyên Căn, Giá Rẻ, Chính Chủ, Mới Nhất 2022", "Cho thuê nhà nguyên căn - Kênh đăng tin cho thuê nhà số 1: giá rẻ, chính chủ, miễn trung gian, đầy đủ tiện nghi, mức giá, diện tích cho thuê khác nhau.", current_timestamp, current_timestamp);
 
-INSERT INTO Categories (code, value, createdAt, updatedAt) VALUES ("ADMIN", "ADMIN", current_timestamp, current_timestamp);
-INSERT INTO Categories (code, value, createdAt, updatedAt) VALUES ("USER", "Thành viên", current_timestamp, current_timestamp);
+INSERT INTO Roles (code, value, createdAt, updatedAt) VALUES ("ADMIN", "Quản trị viên", current_timestamp, current_timestamp);
+INSERT INTO Roles (code, value, createdAt, updatedAt) VALUES ("USER", "Thành viên", current_timestamp, current_timestamp);

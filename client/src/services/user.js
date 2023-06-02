@@ -25,3 +25,21 @@ export const apiUpdateUser = (payload) => new Promise(async (resolve, reject) =>
         reject(error)
     }
 })
+
+export const apiGetUsers = (params) => axios({
+    url: '/api/v1/user/',
+    params,
+    method: 'get'
+})
+export const apiGetRoles = () => axios({
+    url: '/api/v1/user/roles',
+    method: 'get'
+})
+export const apiUpdateUserByAdmin = (uid) => axios({
+    url: '/api/v1/user/update-admin/' + uid,
+    method: 'put'
+})
+export const apiDeleteUser = (uid) => axios({
+    url: '/api/v1/user/' + uid,
+    method: 'delete'
+})

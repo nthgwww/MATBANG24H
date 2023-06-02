@@ -14,7 +14,7 @@ const Admin = () => {
             <div className='w-[327px] flex-none py-4 pl-4 h-full shadow-sm'>
                 <AdminSidebar />
             </div>
-            <div className='flex-auto h-full py-4 overflow-y-scroll'>
+            <div className='flex-auto h-full py-4'>
                 <Outlet />
             </div>
         </div>
