@@ -35,11 +35,12 @@ export const apiGetRoles = () => axios({
     url: '/api/v1/user/roles',
     method: 'get'
 })
-export const apiUpdateUserByAdmin = (uid) => axios({
+export const apiUpdateUserByAdmin = (uid, data) => axios({
     url: '/api/v1/user/update-admin/' + uid,
-    method: 'put'
+    method: 'put',
+    data
 })
 export const apiDeleteUser = (uid) => axios({
-    url: '/api/v1/user/' + uid,
+    url: '/api/v1/user/delete-admin/' + uid,
     method: 'delete'
 })

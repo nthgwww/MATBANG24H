@@ -45,14 +45,14 @@ const ManageUser = () => {
 
     const deletePost = async (uid) => {
         const response = await apiDeleteUser(uid)
-        if (response.data.success) {
+        if (response.data.err === 0) {
             toast.success(response.mes)
             setUpdate(!update)
         } else toast.error(response.mes)
     }
     const handleSubmit = async () => {
         const response = await apiUpdateUserByAdmin(edit.id, payload)
-        if (response.data.success) setEdit(null)
+        if (response.data.err === 0) setEdit(null)
     }
     return (
         <div className='relative  bg-white p-4'>

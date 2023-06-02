@@ -6,6 +6,8 @@ import { Admin, Dashboard, ManagePostAdmin, ManageUser } from './containers/Admi
 import * as actions from './store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -52,8 +54,19 @@ function App() {
           <Route path={path.MANAGE_POST} element={<ManagePostAdmin />} />
           <Route path={path.MANAGE_USER} element={<ManageUser />} />
         </Route>
-
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="color"
+      />
     </div>
   );
 }

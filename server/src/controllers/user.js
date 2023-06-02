@@ -58,7 +58,7 @@ export const getRoles = async (req, res) => {
 export const updateUserByAdmin = async (req, res) => {
     try {
         const { uid } = req.params
-        const response = await services.updateUserByAdmin(uid)
+        const response = await services.updateUserByAdmin(req.body, uid)
         return res.status(200).json(response)
 
     } catch (error) {

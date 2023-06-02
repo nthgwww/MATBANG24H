@@ -74,11 +74,11 @@ export const getRoles = () => new Promise(async (resolve, reject) => {
     }
 })
 
-export const updateUserByAdmin = (uid) => new Promise(async (resolve, reject) => {
+export const updateUserByAdmin = (data, uid) => new Promise(async (resolve, reject) => {
     try {
-        const response = await db.User.update(req.body, { where: { id: uid } })
+        const response = await db.User.update(data, { where: { id: uid } })
         resolve({
-            err: response[0] > 0 ? true : false,
+            err: response[0] > 0 ? 0 : 1,
             user: response[0] > 0 ? response : 'No user updated'
         })
     } catch (error) {
@@ -89,7 +89,7 @@ export const deleteUserByAdmin = (id) => new Promise(async (resolve, reject) => 
     try {
         const response = await db.User.destroy({ where: { id } })
         resolve({
-            err: response ? true : false,
+            err: response ? 0 : 1,
             mes: response ? 'Xóa user thành công' : 'No user deleted'
         })
     } catch (error) {
