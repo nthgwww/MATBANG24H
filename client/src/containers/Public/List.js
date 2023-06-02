@@ -25,6 +25,7 @@ const List = ({ categoryCode }) => {
         })
         if (categoryCode) searchParamsObject.categoryCode = categoryCode
         if (sort === 1) searchParamsObject.order = ['createdAt', 'DESC']
+        searchParamsObject.isActived = 1
         dispatch(getPostsLimit(searchParamsObject))
     }, [searchParams, categoryCode, sort])
 

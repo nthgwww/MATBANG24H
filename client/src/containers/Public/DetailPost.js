@@ -22,7 +22,7 @@ const DetailPost = () => {
 
 
     useEffect(() => {
-        postId && dispatch(getPostsLimit({ id: postId }))
+        postId && dispatch(getPostsLimit({ id: postId, isActived: true }))
     }, [postId])
 
     const handleFilterLabel = () => {

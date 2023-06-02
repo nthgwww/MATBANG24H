@@ -81,7 +81,8 @@ export const insertService = () => new Promise(async (resolve, reject) => {
                     priceCode: dataPrice.find(area => area.max > currentPrice && area.min <= currentPrice)?.code,
                     provinceCode,
                     priceNumber: getNumberFromStringV2(item?.header?.attributes?.price),
-                    areaNumber: getNumberFromStringV2(item?.header?.attributes?.acreage)
+                    areaNumber: getNumberFromStringV2(item?.header?.attributes?.acreage),
+                    isActived: true
                 })
                 await db.Attribute.create({
                     id: attributesId,

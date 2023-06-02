@@ -53,6 +53,10 @@ module.exports = {
             areaNumber: {
                 type: Sequelize.FLOAT
             },
+            isActived: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: false
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

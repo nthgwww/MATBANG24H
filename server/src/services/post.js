@@ -15,7 +15,8 @@ export const getPostsService = () => new Promise(async (resolve, reject) => {
                 { model: db.Attribute, as: 'attributes', attributes: ['price', 'acreage', 'published', 'hashtag'] },
                 { model: db.User, as: 'user', attributes: ['name', 'zalo', 'phone'] },
             ],
-            attributes: ['id', 'title', 'star', 'address', 'description']
+            attributes: ['id', 'title', 'star', 'address', 'description'],
+            where: { isActiced: true }
         })
         resolve({
             err: response ? 0 : 1,
@@ -74,7 +75,8 @@ export const getNewPostService = () => new Promise(async (resolve, reject) => {
                 { model: db.Image, as: 'images', attributes: ['image'] },
                 { model: db.Attribute, as: 'attributes', attributes: ['price', 'acreage', 'published', 'hashtag'] },
             ],
-            attributes: ['id', 'title', 'star', 'createdAt']
+            attributes: ['id', 'title', 'star', 'createdAt'],
+            where: { isActiced: true }
         })
         resolve({
             err: response ? 0 : 1,

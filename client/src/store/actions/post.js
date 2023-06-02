@@ -48,7 +48,7 @@ export const getPostsLimit = (query) => async (dispatch) => {
 }
 export const getNewPosts = () => async (dispatch) => {
     try {
-        const response = await apiGetNewPosts()
+        const response = await apiGetNewPosts({ isActived: 1 })
         if (response?.data.err === 0) {
             dispatch({
                 type: actionTypes.GET_NEW_POST,
@@ -73,7 +73,8 @@ export const getOutStandingPost = () => async (dispatch) => {
     try {
         const response = await apiGetPostsLimit({
             limitPost: 5,
-            order: ['star', 'DESC']
+            order: ['star', 'DESC'],
+            isActived: 1
         })
         if (response?.data.err === 0) {
             dispatch({

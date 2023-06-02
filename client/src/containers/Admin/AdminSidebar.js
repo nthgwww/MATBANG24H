@@ -23,11 +23,11 @@ const AdminSidebar = () => {
                 <span >Mã thành viên: <small className='font-medium uppercase'>{currentData?.id?.slice(1, 8)}</small></span>
             </div>
             <div>
-                {memuSidebar?.map(item => {
+                {memuSidebar?.map((item, index) => {
                     return (
                         <NavLink
                             className={({ isActive }) => isActive ? activeStyle : notActiceStyle}
-                            key={item.id}
+                            key={index}
                             to={item?.path}
                         >
                             {item.text}
