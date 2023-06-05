@@ -33,6 +33,7 @@ const ManagePostAdmin = () => {
             }
         })
         searchParamsObject.limitPost = 10
+        searchParamsObject.order = ['createdAt', 'DESC']
         if (!edit) fetchPosts(searchParamsObject)
     }, [searchParams, edit, update])
     const handleSubmit = async () => {
