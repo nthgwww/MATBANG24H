@@ -103,3 +103,28 @@ export const apiDeletePost = (postId) => new Promise(async (resolve, reject) => 
         reject(error)
     }
 })
+export const apiUpdatePostByAdmin = (data, pid, aid) => new Promise(async (resolve, reject) => {
+    try {
+        const response = await axiosConfig({
+            method: 'put',
+            url: `/api/v1/post/update-admin/${pid}`,
+            data: { ...data, aid }
+        })
+        resolve(response)
+
+    } catch (error) {
+        reject(error)
+    }
+})
+export const apiDeletePostByAdmin = (pid) => new Promise(async (resolve, reject) => {
+    try {
+        const response = await axiosConfig({
+            method: 'delete',
+            url: `/api/v1/post/delete-admin/${pid}`,
+        })
+        resolve(response)
+
+    } catch (error) {
+        reject(error)
+    }
+})

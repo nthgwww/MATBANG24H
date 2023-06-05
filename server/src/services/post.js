@@ -50,7 +50,6 @@ export const getPostsLimitService = (page, { limitPost, order, ...query }, { pri
                 { model: db.Overview, as: 'overviews' },
                 { model: db.Label, as: 'labelData', attributes: { exclude: ['createdAt', 'updatedAt'] } },
             ],
-            attributes: ['id', 'title', 'star', 'address', 'description']
         })
         resolve({
             err: response ? 0 : 1,
@@ -258,7 +257,49 @@ export const updatePost = ({ postId, overviewId, imagesId, attributesId, ...body
         reject(error)
     }
 })
-export const deletePost = (postId) => new Promise(async (resolve, reject) => {
+export const deletePost = (postId, uid) => new Promise(async (resolve, reject) => {
+    try {
+        const response = await db.Post.destroy({
+            where: { id: postId, userId: uid }
+        })
+        resolve({
+            err: response > 0 ? 0 : 1,
+            msg: response > 0 ? 'Delete' : 'No post delete.',
+        })
+
+    } catch (error) {
+        reject(error)
+    }
+})
+
+export const updatePostByAdmin = ({ title, area, price, isActived, address, aid }, pid) => new Promise(async (resolve, reject) => {
+    try {
+        const response = await Promise.all([
+            db.Post.update({
+                title, address, priceNumber: Math.round(price / 100000) / 10, areaNumber: area, isActived
+            }, {
+                where: { id: pid }
+            }),
+            db.Attribute.update({
+                price: price < 1000000
+                    ? `${Number(price.toFixed(1)).toLocaleString()} đồng/tháng`
+                    : `${Number((Math.round(price / 100000) / 10).toFixed(1)).toLocaleString()} triệu/tháng`,
+                acreage: `${area}m2`
+            }, {
+                where: { id: aid }
+            })
+        ])
+        resolve({
+            err: response ? 0 : 1,
+            msg: response ? 'updated' : 'No post update.',
+        })
+
+    } catch (error) {
+        reject(error)
+    }
+})
+
+export const deletePostByAdmin = (postId) => new Promise(async (resolve, reject) => {
     try {
         const response = await db.Post.destroy({
             where: { id: postId }

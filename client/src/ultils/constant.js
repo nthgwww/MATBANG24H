@@ -61,12 +61,12 @@ export const attention = [
 ]
 const { ImPencil2, TbLayoutDashboard, AiOutlineUser, MdOutlineGroups, MdOutlineReportGmailerrorred, AiOutlineFieldTime } = icons
 export const memuSidebar = [
-    {
-        id: 10,
-        text: 'Tổng quan',
-        path: path.DASHBOARD,
-        icon: <TbLayoutDashboard size={24} />
-    },
+    // {
+    //     id: 10,
+    //     text: 'Tổng quan',
+    //     path: path.DASHBOARD,
+    //     icon: <TbLayoutDashboard size={24} />
+    // },
     {
         id: 30,
         text: 'Quản lý thành viên',

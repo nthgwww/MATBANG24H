@@ -99,7 +99,33 @@ export const deletePost = async (req, res) => {
             err: 1,
             msg: 'Missing inputs'
         })
-        const response = await postService.deletePost(postId)
+        const response = await postService.deletePost(postId, id)
+        return res.status(200).json(response)
+
+    } catch (error) {
+        return res.status(500).json({
+            err: -1,
+            msg: 'Failed at post controller: ' + error
+        })
+    }
+}
+export const updatePostByAdmin = async (req, res) => {
+    const { pid } = req.params
+    try {
+        const response = await postService.updatePostByAdmin(req.body, pid)
+        return res.status(200).json(response)
+
+    } catch (error) {
+        return res.status(500).json({
+            err: -1,
+            msg: 'Failed at post controller: ' + error
+        })
+    }
+}
+export const deletePostByAdmin = async (req, res) => {
+    const { pid } = req.params
+    try {
+        const response = await postService.deletePostByAdmin(pid)
         return res.status(200).json(response)
 
     } catch (error) {
