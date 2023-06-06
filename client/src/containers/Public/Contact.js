@@ -23,7 +23,7 @@ const Contact = () => {
             <div className='flex gap-4'>
                 <div className='flex-1 flex flex-col gap-4 h-fit bg-red-400 rounded-3xl p-4 text-white bg-gradient-to-br from-blue-700 to-cyan-400'>
                     <h4 className='font-medium'>Thông tin liên hệ</h4>
-                    <span>Chúng tôi biết bạn có rất nhiều sự lựa chọn. Nhưng cảm ơn vì đã lựa chọn PhongTro123.Com</span>
+                    <span>Chúng tôi biết bạn có rất nhiều sự lựa chọn. Nhưng cảm ơn vì đã lựa chọn MatBang24H</span>
                     <span>Điện thoại: 0377 444 879</span>
                     <span>Email: cskh.matbang24h@gmail.com</span>
                     <span>Zalo: 0377 444 879</span>

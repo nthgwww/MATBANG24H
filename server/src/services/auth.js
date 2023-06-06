@@ -57,7 +57,7 @@ export const forgotPassword = ({ email }) => new Promise(async (resolve, reject)
         if (rs) {
             const token = crypto.randomBytes(32).toString('hex')
             const subject = 'Quên mật khẩu'
-            const html = `Xin vui lòng click vào link dưới đây để hoàn tất quá trình reset mật khẩu.Link này sẽ hết hạn sau 5 phút kể từ bây giờ. <a href=${process.env.CLIENT_URL}/reset-mat-khau/${token}>Click here</a>`
+            const html = `Xin vui lòng click vào link dưới đây để hoàn tất quá trình reset mật khẩu tại MATBANG24H.Link này sẽ hết hạn sau 15 phút kể từ bây giờ. <a href=${process.env.CLIENT_URL}/reset-mat-khau/${token}>Click here</a>`
             const updated = await db.User.update({
                 rspasstk: token,
                 rspassexp: Date.now() + 5 * 60 * 1000

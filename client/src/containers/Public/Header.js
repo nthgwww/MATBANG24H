@@ -45,8 +45,8 @@ const Header = () => {
         </Link>
         <div className="flex items-center gap-1">
           {!isLoggedIn && (
-            <div className="flex items-center gap-1">
-              <small>Matbang24h xin chào !</small>
+            <div className="flex items-center gap-1 ">
+              <small className="font-bold ">Matbang24h xin chào !</small>
               <Button
                 text={"Đăng nhập"}
                 textColor="text-white"
@@ -67,7 +67,7 @@ const Header = () => {
               <Button
                 text={"Quản lý tài khoản"}
                 textColor="text-white"
-                bgColor="bg-blue-700"
+                bgColor="bg-slate-800"
                 px="px-4"
                 IcAfter={BsChevronDown}
                 onClick={() => setIsShowMenu((prev) => !prev)}
@@ -88,14 +88,14 @@ const Header = () => {
                     })}
                   {currentData?.role === "ADMIN" && (
                     <Link
-                      className="hover:text-orange-500 flex items-center gap-2 text-blue-600 border-b border-gray-200 py-2"
+                      className="hover:text-yellow-500 flex items-center gap-2 text-slate-600 border-b border-gray-200 py-2"
                       to={`/${path.ADMIN}/${path.MANAGE_POST}`}
                     >
                       Admin
                     </Link>
                   )}
                   <span
-                    className="cursor-pointer hover:text-orange-500 text-blue-500 py-2 flex items-center gap-2"
+                    className="cursor-pointer hover:text-yellow-500 text-slate-500 py-2 flex items-center gap-2"
                     onClick={() => {
                       setIsShowMenu(false);
                       dispatch(actions.logout());

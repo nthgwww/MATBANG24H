@@ -80,6 +80,7 @@ const DetailPost = () => {
                                     <span key={index}>{item}</span>
                                 )
                             }) : <span>{JSON.parse(posts[0]?.description)}</span>}
+                            
                         </div>
                     </div>
                     <div className='mt-8'>

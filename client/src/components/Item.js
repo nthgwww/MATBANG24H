@@ -38,7 +38,7 @@ const Item = ({ images, user, title, star, description, attributes, address, id 
             </Link>
             <div className='w-3/5'>
                 <div className='flex justify-between gap-4 w-full'>
-                    <Link to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/', ''))}/${id}`} className='text-red-600 font-medium'>
+                    <Link to={`${path.DETAIL}${formatVietnameseToString(title?.replaceAll('/', ''))}/${id}`} className='text-slate-800 font-medium'>
                         {handleStar(+star).length > 0 && handleStar(+star).map((star, number) => {
                             return (
                                 <span key={number}>{star}</span>
@@ -67,14 +67,14 @@ const Item = ({ images, user, title, star, description, attributes, address, id 
                     </div>
                     <div className='flex items-center gap-1'>
                         <a
-                            className='bg-blue-700 text-white p-1 rounded-md'
+                            className='bg-slate-800 text-white p-1 rounded-md'
                             href='/'
                             target='_blank'
                         >
                             {`Gọi ${user?.phone}`}
                         </a>
                         <a
-                            className='text-blue-700 px-1 rounded-md border border-blue-700'
+                            className='text-blue-700 px-1 rounded-md border border-slate-700'
                             href={`https://zalo.me/${user?.zalo}`}
                             target='_blank'
                         >

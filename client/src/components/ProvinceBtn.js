@@ -15,7 +15,7 @@ const ProvinceBtn = ({ name, image, provinceCode }) => {
     }
     return (
         <div
-            className='shadow-md rounded-bl-md text-blue-700 rounded-br-md cursor-pointer hover:text-orange-600'
+            className='shadow-md rounded-bl-md text-slate-800 rounded-br-md cursor-pointer hover:text-slate-600'
             onClick={handleOnClick}
         >
             <img
