@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import logo from "../../assets/logowithoutbg.png";
+import logo from "../../assets/logo.png";
 import { Button, User } from "../../components";
 import icons from "../../ultils/icons";
 import {
@@ -35,28 +35,28 @@ const Header = () => {
 
   return (
     <div ref={headerRef} className="w-3/5 ">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full   flex items-center justify-between">
         <Link to={"/"}>
           <img
             src={logo}
             alt="logo"
-            className="w-[240px] h-[70px] object-contain"
+            className="w-[300px] h-[80px] object-contain"
           />
         </Link>
         <div className="flex items-center gap-1">
           {!isLoggedIn && (
             <div className="flex items-center gap-1">
-              <small>Phongtro123.com xin chào !</small>
+              <small>Matbang24h xin chào !</small>
               <Button
                 text={"Đăng nhập"}
                 textColor="text-white"
-                bgColor="bg-[#3961fb]"
+                bgColor="bg-slate-900"
                 onClick={() => goLogin(false)}
               />
               <Button
                 text={"Đăng ký"}
-                textColor="text-white"
-                bgColor="bg-[#3961fb]"
+                bgColor="bg-yellow-400"
+                textColor = 'black'
                 onClick={() => goLogin(true)}
               />
             </div>

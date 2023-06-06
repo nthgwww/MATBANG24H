@@ -12,7 +12,7 @@ const SearchDetail = () => {
         <div className='w-full flex flex-col gap-3' >
             <div>
                 <h1 className='text-[28px] font-bold' >{location.state?.titleSearch || 'Kết quả tìm kiếm'}</h1>
-                <p className='text-base text-gray-700'>{`${location.state?.titleSearch || ''} phòng mới xây, chính chủ gần chợ, trường học, siêu thị, cửa hàng tiện lợi, khu an ninh.`}</p>
+                <p className='text-base text-gray-700'>{`${location.state?.titleSearch || ''} Mặt bằng mới xây, chính chủ gần chợ, trường học, siêu thị, cửa hàng tiện lợi, khu an ninh.`}</p>
             </div>
             <div className='w-full flex gap-4'>
                 <div className='w-[70%]'>

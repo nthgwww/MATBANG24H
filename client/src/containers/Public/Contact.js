@@ -24,11 +24,11 @@ const Contact = () => {
                 <div className='flex-1 flex flex-col gap-4 h-fit bg-red-400 rounded-3xl p-4 text-white bg-gradient-to-br from-blue-700 to-cyan-400'>
                     <h4 className='font-medium'>Thông tin liên hệ</h4>
                     <span>Chúng tôi biết bạn có rất nhiều sự lựa chọn. Nhưng cảm ơn vì đã lựa chọn PhongTro123.Com</span>
-                    <span>Điện thoại: 0917 686 101</span>
-                    <span>Email: cskh.phongtro123@gmail.com</span>
-                    <span>Zalo: 0917 686 101</span>
-                    <span>Viber: 0917 686 101</span>
-                    <span>Địa chỉ: LE-4.07, Toà nhà Lexington Residence, Số 67 Mai Chí Thọ, Phường An Phú, Quận 2, Tp. Hồ Chí Minh.</span>
+                    <span>Điện thoại: 0377 444 879</span>
+                    <span>Email: cskh.matbang24h@gmail.com</span>
+                    <span>Zalo: 0377 444 879</span>
+                    <span>Viber: 0377 444 879</span>
+                    <span>Địa chỉ: 451 Lê Văn Việt, Q9, Hồ Chí Minh.</span>
                 </div>
                 <div className='flex-1 bg-white shadow-md rounded-md p-4 mb-6'>
                     <h4 className='font-medium text-lg mb-4'>Liên hệ trực tuyến</h4>
